@@ -6384,19 +6384,18 @@ BattleScript_LocalBattleLost::
 	jumpifbattletype BATTLE_TYPE_EREADER_TRAINER, BattleScript_LocalBattleLostEnd
 	jumpifhalfword CMP_EQUAL, gTrainerBattleOpponent_A, TRAINER_SECRET_BASE, BattleScript_LocalBattleLostEnd
 BattleScript_LocalBattleLostPrintWhiteOut::
-	jumpifbattletype BATTLE_TYPE_TRAINER, BattleScript_LocalBattleLostEnd
 	printstring STRINGID_PLAYERWHITEOUT
 	waitmessage 0x40
-	getmoneyreward
 	printstring STRINGID_PLAYERWHITEOUT2
 	waitmessage 0x40
-	end2
 BattleScript_LocalBattleLostEnd::
-	printstring STRINGID_PLAYERLOSTAGAINSTENEMYTRAINER
-	waitmessage 0x40
-	getmoneyreward
-	printstring STRINGID_PLAYERPAIDPRIZEMONEY
-	waitmessage 0x40
+	end2
+.else
+	printstring STRINGID_PLAYERWHITEOUT
+	waitmessage B_WAIT_TIME_LONG
+	printstring STRINGID_PLAYERWHITEOUT2
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_LocalBattleLostEnd::
 	end2
 .endif
 
